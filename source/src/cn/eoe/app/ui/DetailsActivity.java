@@ -28,6 +28,7 @@ import cn.eoe.app.https.NetWorkHelper;
 import cn.eoe.app.ui.base.BaseActivity;
 import cn.eoe.app.utils.CommonUtil;
 import cn.eoe.app.utils.IntentUtil;
+import cn.eoe.app.utils.StringUtil;
 import cn.eoe.app.utils.Utility;
 
 public class DetailsActivity extends BaseActivity implements OnClickListener {
@@ -183,7 +184,7 @@ public class DetailsActivity extends BaseActivity implements OnClickListener {
 		// TODO Auto-generated method stub
 		super.onPause();
 		// 保存状态
-		if (mKey.equals(null) && mKey.equals("")) {
+		if (StringUtil.isEmpty(mKey)) {
 			return;
 		}
 		if (mDBID == -1 && (IsGood || IsBed || IsCollect)) {
@@ -254,7 +255,7 @@ public class DetailsActivity extends BaseActivity implements OnClickListener {
 		// TODO Auto-generated method stub
 		if (responseEntity == null)
 			return;
-		if (mKey.equals(null) || mKey.equals("")) {
+		if (StringUtil.isEmpty(mKey)) {
 			showLongToast(getResources().getString(R.string.user_login_prompt));
 			return;
 		}

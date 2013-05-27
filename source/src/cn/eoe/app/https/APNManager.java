@@ -3,6 +3,8 @@ package cn.eoe.app.https;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.eoe.app.utils.StringUtil;
+
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
@@ -76,10 +78,12 @@ public class APNManager {
 					&& apnNode.getMcc().equals(mcc)
 					&& apnNode.getMnc().equals(mnc) && apnNode.getNumeric()
 					.equals(numeric))
-					&& (type == null || "default".equals(type) || ""
-							.equals(type)))// || (apnNode.getApn().equals(apn)
-											// && "".equals(proxy) &&
-											// "".equals(port))
+					&& (StringUtil.isEmpty(type) || "default".equals(type)))// ||
+																			// (apnNode.getApn().equals(apn)
+																			// &&
+																			// "".equals(proxy)
+																			// &&
+																			// "".equals(port))
 			{
 				return apnId;
 			} else {
@@ -272,7 +276,7 @@ public class APNManager {
 	}
 
 	public String matchAPN(String currentName) {
-		if ("".equals(currentName) || null == currentName) {
+		if (StringUtil.isEmpty(currentName)) {
 			return "";
 		}
 		currentName = currentName.toLowerCase();
@@ -299,7 +303,7 @@ public class APNManager {
 		else
 			return "";
 	}
-	
+
 	/**
 	 * 获取Apn列表
 	 * 
@@ -310,8 +314,8 @@ public class APNManager {
 		String tag = "Main.getAPNList()";
 
 		String projection[] = { "_id,apn,type,current" };
-		Cursor cr = mContext.getContentResolver().query(APN_TABLE_URI, projection, null,
-				null, null);
+		Cursor cr = mContext.getContentResolver().query(APN_TABLE_URI,
+				projection, null, null, null);
 		List<APN> list = new ArrayList<APN>();
 		while (cr != null && cr.moveToNext()) {
 			Log.d(tag,

@@ -1230,7 +1230,7 @@ public final class DateUtil implements Serializable {
 	 * @return ���ظ�ʽΪyyyy/MM/dd���ַ�
 	 */
 	public static String changeDate(String argDate) {
-		if (argDate == null || argDate.trim().equals("")) {
+		if (StringUtil.isEmpty(argDate)) {
 			return "";
 		}
 		String result = "";
@@ -1270,10 +1270,10 @@ public final class DateUtil implements Serializable {
 	 * @return ���ظ�ʽΪyyyy/MM/dd���ַ�
 	 */
 	public static String changeDateWithSplit(String argDate, String split) {
-		if (argDate == null || argDate.trim().equals("")) {
+		if (StringUtil.isEmpty(argDate)) {
 			return "";
 		}
-		if (split == null || split.trim().equals("")) {
+		if (StringUtil.isEmpty(split)) {
 			split = "-";
 		}
 		String result = "";

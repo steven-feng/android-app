@@ -1,5 +1,6 @@
 package cn.eoe.app.db;
 
+import cn.eoe.app.utils.StringUtil;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -59,7 +60,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		for (int i = 0; i < columnsClasses.length; i++) {
 			try {
 				columns = columnsClasses[i].newInstance();
-				if ("".equals(actionString) || actionString == null) {
+				if (StringUtil.isEmpty(actionString)) {
 					db.execSQL(columns.getTableCreateor());
 				} else {
 					db.execSQL(actionString + columns.getTableName());

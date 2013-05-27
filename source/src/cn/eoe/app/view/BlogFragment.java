@@ -20,6 +20,7 @@ import cn.eoe.app.entity.BlogContentItem;
 import cn.eoe.app.entity.BlogsCategoryListEntity;
 import cn.eoe.app.entity.BlogsMoreResponse;
 import cn.eoe.app.utils.ImageUtil;
+import cn.eoe.app.utils.StringUtil;
 
 /**
  * 博客部分的Fragment
@@ -152,7 +153,7 @@ public class BlogFragment extends BaseListFragment {
 			holder.short_.setText(item.getShort_content());
 			String url = item.getHead_image_url().replaceAll("=small",
 					"=middle");
-			if (url.equals(null) || url.equals("")) {
+			if (StringUtil.isEmpty(url)) {
 				holder.img_thu.setVisibility(View.GONE);
 			} else {
 				holder.img_thu.setVisibility(View.VISIBLE);
@@ -180,7 +181,7 @@ public class BlogFragment extends BaseListFragment {
 	@Override
 	public void onLoadMore() {
 		// TODO Auto-generated method stub
-		if (more_url.equals(null) || more_url.equals("")) {
+		if (StringUtil.isEmpty(more_url)) {
 			mHandler.sendEmptyMessage(1);
 			return;
 		} else {

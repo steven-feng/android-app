@@ -22,6 +22,7 @@ import cn.eoe.app.entity.NewsCategoryListEntity;
 import cn.eoe.app.entity.NewsContentItem;
 import cn.eoe.app.entity.NewsMoreResponse;
 import cn.eoe.app.utils.ImageUtil;
+import cn.eoe.app.utils.StringUtil;
 
 @SuppressLint("NewApi")
 public class NewsFragment extends BaseListFragment {
@@ -148,7 +149,7 @@ public class NewsFragment extends BaseListFragment {
 			holder.title_.setText(item.getTitle());
 			holder.short_.setText(item.getShort_content());
 			String img_url = item.getThumbnail_url();
-			if (img_url.equals(null) || img_url.equals("")) {
+			if (StringUtil.isEmpty(img_url)) {
 				holder.img_thu.setVisibility(View.GONE);
 			} else {
 				holder.img_thu.setVisibility(View.VISIBLE);
@@ -174,7 +175,7 @@ public class NewsFragment extends BaseListFragment {
 	@Override
 	public void onLoadMore() {
 		// TODO Auto-generated method stub
-		if (more_url.equals(null) || more_url.equals("")) {
+		if (StringUtil.isEmpty(more_url)) {
 			mHandler.sendEmptyMessage(1);
 			return;
 		} else {

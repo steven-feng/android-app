@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.regex.Pattern;
 
+import android.text.TextUtils;
+
 public class StringUtil {
 
 	public static final String URL_REG_EXPRESSION = "^(https?://)?([a-zA-Z0-9_-]+\\.[a-zA-Z0-9_-]+)+(/*[A-Za-z0-9/\\-_&:?\\+=//.%]*)*";
@@ -69,6 +71,18 @@ public class StringUtil {
 			fos.write(s.getBytes());
 			fos.close();
 		}
+	}
+
+	/**
+	 * 判断字符串是否为空("" || null)
+	 * 
+	 * @param s 传入判断字符串
+	 *            
+	 * 
+	 * @return 判断结果
+	 */
+	public static boolean isEmpty(String s) {
+		return TextUtils.isEmpty(s);
 	}
 
 }

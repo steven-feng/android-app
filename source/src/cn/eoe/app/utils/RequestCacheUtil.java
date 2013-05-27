@@ -83,11 +83,11 @@ public class RequestCacheUtil {
 		String result = "";
 		if (useCache) {
 			result = getStringFromSoftReference(requestUrl);
-			if (!result.equals(null) && !result.equals("")) {
+			if (!StringUtil.isEmpty(result)) {
 				return result;
 			}
 			result = getStringFromLocal(requestPath, requestUrl, dbHelper);
-			if (!result.equals(null) && !result.equals("")) {
+			if (!StringUtil.isEmpty(result)) {
 				putStringForSoftReference(requestUrl, result);
 				return result;
 			}
@@ -111,7 +111,7 @@ public class RequestCacheUtil {
 		String result = "";
 		try {
 			result = HttpUtils.getByHttpClient(context, requestUrl);
-			if (result.equals(null) && result.equals("")) {
+			if (StringUtil.isEmpty(result)) {
 				return result;
 			}
 			// 更新数据库
@@ -183,7 +183,7 @@ public class RequestCacheUtil {
 		if (RequestCache.containsKey(requestUrl)) {
 			SoftReference<String> reference = RequestCache.get(requestUrl);
 			String result = (String) reference.get();
-			if (result != null && !result.equals("")) {
+			if (!StringUtil.isEmpty(result)) {
 				return result;
 			}
 		}

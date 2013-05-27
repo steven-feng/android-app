@@ -18,6 +18,7 @@ import cn.eoe.app.biz.WikiDao;
 import cn.eoe.app.entity.WikiCategoryListEntity;
 import cn.eoe.app.entity.WikiContentItem;
 import cn.eoe.app.entity.WikiMoreResponse;
+import cn.eoe.app.utils.StringUtil;
 
 public class WikiFragment extends BaseListFragment {
 
@@ -142,7 +143,7 @@ public class WikiFragment extends BaseListFragment {
 
 	@Override
 	public void onLoadMore() {
-		if (more_url.equals(null) || more_url.equals("")) {
+		if (StringUtil.isEmpty(more_url)) {
 			mHandler.sendEmptyMessage(1);
 			return;
 		} else {
