@@ -82,7 +82,7 @@ public class StringUtil {
 	 * @return 判断结果
 	 */
 	public static boolean isEmpty(String s) {
-		return TextUtils.isEmpty(s);
+		return TextUtils.isEmpty(s); 
 	}
 
 }
